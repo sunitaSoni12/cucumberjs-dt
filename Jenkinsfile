@@ -18,9 +18,9 @@ pipeline {
                 echo 'Test'
                 script{
                     if(isUnix()){
-                        sh 'npm install'
+                        sh 'npm test'
                     }else{
-                        bat 'npm install'
+                        bat 'npm test'
                     }
                 }
             }
@@ -30,9 +30,9 @@ pipeline {
                 echo 'Reports'
                script{
                     if(isUnix()){
-                        sh 'npm install'
+                        sh 'npm run report'
                     }else{
-                        bat 'npm install'
+                        bat 'npm run report'
                     }
                 }
             }
