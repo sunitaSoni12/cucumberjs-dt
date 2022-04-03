@@ -1,9 +1,10 @@
 pipeline {
     agent any
 
-            stage('Install Dependicies') {
+    stages {
+        stage('Install') {
             steps {
-                echo 'Dependencies'
+                echo 'Install Depedencies'
                 script{
                     if(isUnix()){
                         sh 'npm install'
@@ -15,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Test'
+                echo 'Execute tests'
                 script{
                     if(isUnix()){
                         sh 'npm test'
@@ -25,10 +26,10 @@ pipeline {
                 }
             }
         }
-        stage('Reports') {
+        stage('Report') {
             steps {
                 echo 'Reports'
-               script{
+                script{
                     if(isUnix()){
                         sh 'npm run report'
                     }else{
@@ -37,10 +38,10 @@ pipeline {
                 }
             }
         }
-        stage('Publish Reports') {
+        stage('Publish Report') {
             steps {
-                echo 'Publish Report'
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'cucumber_report.html', reportName: 'cucumber Report', reportTitles: ''])
+                echo 'Publish Reports'
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'report', reportFiles: 'cucumber_report.html', reportName: 'Cucumber Report', reportTitles: ''])
             }
         }
     }
