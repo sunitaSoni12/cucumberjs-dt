@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": ".\node_modules\.bin\cucumber-js --publish-quiet --format json:report\cucumber_json.json",
+    "test": "./node_modules/bin/cucumber-js --publish-quiet --format json:report/cucumber_json.json",
     "report": "node report.js"
   },
   "keywords": [],
